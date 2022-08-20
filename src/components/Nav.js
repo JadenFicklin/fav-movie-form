@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Allforms from "./Allforms";
+import Form from "./Form";
 
 function Nav() {
   const [form, setForm] = useState(true);
@@ -15,7 +17,15 @@ function Nav() {
             View forms
           </div>
         </div>
-        {form ? <div>hi</div> : <div>goodbye</div>}
+        {form ? (
+          <div>
+            <Form />
+          </div>
+        ) : (
+          <div>
+            <Allforms />
+          </div>
+        )}
       </div>
     </>
   );
