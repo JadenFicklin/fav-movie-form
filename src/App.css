@@ -70,3 +70,10 @@ body {
   padding: 10px;
   background-color: lightgray;
 }
+.submit {
+  width: 100px;
+  height: 30px;
+}
+.submit:hover {
+  cursor: pointer;
+}

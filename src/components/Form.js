@@ -50,7 +50,7 @@ function Form() {
             <label for="genre8">Thriller</label>
             <br></br>
             <br></br>
-            <input type="submit" />
+            <input type="submit" className="submit" />
           </form>
         </div>
       </div>
