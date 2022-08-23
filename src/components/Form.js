@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 function Form() {
   const [movieTitle, setMovieTitle] = useState("");
@@ -16,21 +17,40 @@ function Form() {
   const submitMovie = (e) => {
     e.preventDefault();
 
-    const form = {
-      movieTitle,
-      movieRating,
-      reccomend,
-      isDrama,
-      isComedy,
-      isAction,
-      isFantasy,
-      isHorror,
-      isRomance,
-      isWestern,
-      isThriller,
-    };
+    // const form = {
+    //   movieTitle,
+    //   movieRating,
+    //   reccomend,
+    //   isDrama,
+    //   isComedy,
+    //   isAction,
+    //   isFantasy,
+    //   isHorror,
+    //   isRomance,
+    //   isWestern,
+    //   isThriller,
+    // };
 
-
+    e.preventDefault();
+    axios({
+      method: "POST",
+      url: "http://localhost:5000/api/movieform",
+      data: {
+        movieTitle: movieTitle,
+        movieRating: movieRating,
+        reccomend: reccomend,
+        isDrama: isDrama,
+        isComedy: isComedy,
+        isAction: isAction,
+        isFantasy: isFantasy,
+        isHorror: isHorror,
+        isRomance: isRomance,
+        isWestern: isWestern,
+        isThriller: isThriller,
+      },
+    })
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err + "this is the error"));
   };
 
   return (

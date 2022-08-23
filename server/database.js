@@ -28,6 +28,28 @@ app.post("/api/register", async (req, res) => {
     .then((result) => res.send(result[0]).status(200));
 });
 
+app.post("/api/movieform", async (req, res) => {
+  const {
+    movieTitle,
+    movieRating,
+    reccomend,
+    isDrama,
+    isComedy,
+    isAction,
+    isFantasy,
+    isHorror,
+    isRomance,
+    isWestern,
+    isThriller,
+  } = req.body;
+  return sequelize
+    .query(
+      `INSERT INTO movie (movieTitle,
+    movieRating, reccomend, isDrama, isComedy, isAction, isFantasy, isHorror, isRomance, isWestern, isThriller) VALUES ('${movieTitle}','${movieRating}','${reccomend}','${isDrama}','${isComedy}','${isAction}','${isFantasy}','${isHorror}','${isRomance}','${isWestern}','${isThriller}')`
+    )
+    .then((result) => res.send(result[0]).status(200));
+});
+
 app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`);
 });
