@@ -1,46 +1,73 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 function Allforms() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [myState] = useState(false);
+  const [holdData, setHoldData] = useState([]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  useEffect(() => {
     axios({
-      method: "POST",
-      url: "http://localhost:5000/api/register",
-      data: {
-        username: username,
-        password: password,
-      },
+      method: "GET",
+      url: "http://localhost:5000/api/getforms",
     })
-      .then((res) => console.log(res.data))
+      .then((res) => setHoldData(res.data))
       .catch((err) => console.log(err + "this is the error"));
-  };
+  }, [myState]);
 
   return (
     <>
-      <form className="test-form" onSubmit={handleSubmit}>
-        <h5>input username here</h5>
-        <input
-          type="text"
-          placeholder="username"
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        {username}
-
-        <h5>input password here</h5>
-        <input
-          type="password"
-          placeholder="password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        {password}
-        <br />
-        <br />
-        <button>submit</button>
-      </form>
+      <div className="all-forms-outer">
+        {holdData.map((holdData) => (
+          <div className="all-form-outer">
+            <br></br>
+            <div className="all-movie-name">
+              <span className="bold">Movie Name: </span>
+              {holdData.movietitle}
+            </div>
+            <div className="all-users-ratings">
+              <span className="bold">Users Rating: </span>{" "}
+              {holdData.movierating}
+            </div>
+            <div className="all-reccomend">
+              {holdData.reccomend ? (
+                <p>
+                  <span className="bold">Recommended:</span> yes
+                </p>
+              ) : (
+                <p>
+                  <span className="bold">Recommended:</span> no
+                </p>
+              )}
+            </div>
+            <div className="all-genres-outer">
+              <div className="all-genres-title">
+                <span className="bold">Genres:</span>
+              </div>
+              <div className="all-genres">
+                {holdData.isdrama ? <p>Drama</p> : <p>/</p>}
+              </div>
+              <div className="all-genres">
+                {holdData.iscomedy ? <p>Comedy</p> : <p>/</p>}
+              </div>
+              <div className="all-genres">
+                {holdData.isfantasy ? <p>Fantasy</p> : <p>/</p>}
+              </div>
+              <div className="all-genres">
+                {holdData.ishorror ? <p>horror</p> : <p>/</p>}
+              </div>
+              <div className="all-genres">
+                {holdData.isromance ? <p>romance</p> : <p>/</p>}
+              </div>
+              <div className="all-genres">
+                {holdData.iswestern ? <p>western</p> : <p>/</p>}
+              </div>
+              <div className="all-genres">
+                {holdData.isthriller ? <p>thriller</p> : <p>/</p>}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </>
   );
 }

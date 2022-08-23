@@ -50,6 +50,12 @@ app.post("/api/movieform", async (req, res) => {
     .then((result) => res.send(result[0]).status(200));
 });
 
+app.get("/api/getforms", async (req, res) => {
+  return sequelize
+    .query(`SELECT * FROM movie`)
+    .then((result) => res.send(result[0]).status(200));
+});
+
 app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`);
 });

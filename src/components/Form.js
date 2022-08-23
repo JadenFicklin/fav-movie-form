@@ -17,20 +17,6 @@ function Form() {
   const submitMovie = (e) => {
     e.preventDefault();
 
-    // const form = {
-    //   movieTitle,
-    //   movieRating,
-    //   reccomend,
-    //   isDrama,
-    //   isComedy,
-    //   isAction,
-    //   isFantasy,
-    //   isHorror,
-    //   isRomance,
-    //   isWestern,
-    //   isThriller,
-    // };
-
     e.preventDefault();
     axios({
       method: "POST",
