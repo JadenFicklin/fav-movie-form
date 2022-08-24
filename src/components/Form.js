@@ -173,7 +173,12 @@ function Form() {
               onClick={(e) => submitMovie(e)}
             />
           </form>
-          {submited ? <h1>Form submitted</h1> : null}
+          {submited ? (
+            <div>
+              <h3>Form submitted</h3>
+              <p>check the view forms tab!</p>
+            </div>
+          ) : null}
         </div>
       </div>
     </>

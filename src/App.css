@@ -84,6 +84,7 @@ body {
   height: 100%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .all-form-outer {
   width: 300px;
@@ -105,7 +106,7 @@ body {
 }
 .all-movie-name {
   margin-top: -20px;
-  /* background-color: lightgray; */
+  background-color: rgb(255, 190, 68);
 }
 .all-genres-outer {
   width: 100%;
