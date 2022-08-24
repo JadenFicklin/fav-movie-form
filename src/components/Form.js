@@ -13,6 +13,9 @@ function Form() {
   const [isRomance, setIsRomance] = useState(false);
   const [isWestern, setIsWestern] = useState(false);
   const [isThriller, setIsThriller] = useState(false);
+  const [submited, setSubmited] = useState(false);
+
+  console.log(submited);
 
   const submitMovie = (e) => {
     e.preventDefault();
@@ -37,6 +40,7 @@ function Form() {
     })
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err + "this is the error"));
+    setSubmited(true);
   };
 
   return (
@@ -169,6 +173,7 @@ function Form() {
               onClick={(e) => submitMovie(e)}
             />
           </form>
+          {submited ? <h1>Form submitted</h1> : null}
         </div>
       </div>
     </>
